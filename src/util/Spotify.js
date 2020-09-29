@@ -44,7 +44,6 @@ const Spotify = {
                 album: track.album.name,
                 uri: track.uri
             }))
-
         })
     }
 
@@ -65,7 +64,6 @@ const Spotify = {
     //         })
     //     })
     // }
-
 }
 
 
