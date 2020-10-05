@@ -12,45 +12,45 @@ class App extends React.Component {
     super(props)
     this.state = {
       searchResults: [
-        {
-        name: 'Tiny Dancer', 
-        artist: 'Elton John', 
-        album: 'Madman Across The Water', 
-        id: 1
-      }, 
-      {
-        name: 'Heart Shapped Box', 
-        artist: 'Nirvana', 
-        album: 'In Utero', 
-        id: 2
-      }, 
-      {
-        name: 'Today', 
-        artist: 'Smashing Pumpinks', 
-        album: 'Siames Dream', 
-        id: 3
-      }
+      //   {
+      //   name: 'Tiny Dancer', 
+      //   artist: 'Elton John', 
+      //   album: 'Madman Across The Water', 
+      //   id: 1
+      // }, 
+      // {
+      //   name: 'Heart Shapped Box', 
+      //   artist: 'Nirvana', 
+      //   album: 'In Utero', 
+      //   id: 2
+      // }, 
+      // {
+      //   name: 'Today', 
+      //   artist: 'Smashing Pumpinks', 
+      //   album: 'Siames Dream', 
+      //   id: 3
+      // }
     ],
     playlistName: 'My new Playlist',
     playlistTracks: [
-      {
-        name: 'Hurt', 
-        artist: 'Nine inch Nails', 
-        album: 'The downward siral', 
-        id: 10
-      }, 
-      {
-        name: 'The Beautifull People', 
-        artist: 'Marylin Manson', 
-        album: 'antichrist superstar', 
-        id: 11
-      }, 
-      {
-        name: 'Passenger', 
-        artist: 'Deftones', 
-        album: 'White Pony', 
-        id: 12
-      }
+      // {
+      //   name: 'Hurt', 
+      //   artist: 'Nine inch Nails', 
+      //   album: 'The downward siral', 
+      //   id: 10
+      // }, 
+      // {
+      //   name: 'The Beautifull People', 
+      //   artist: 'Marylin Manson', 
+      //   album: 'antichrist superstar', 
+      //   id: 11
+      // }, 
+      // {
+      //   name: 'Passenger', 
+      //   artist: 'Deftones', 
+      //   album: 'White Pony', 
+      //   id: 12
+      // }
     ]
     }
     // binders
@@ -82,7 +82,14 @@ class App extends React.Component {
   }
 
   savePlaylist() {
-    let tracksURIs = this.playlistTracks.map(track => track.uri )
+    let tracksURIs = this.playlistTracks.map(track => track.uri)
+    console.log(tracksURIs)
+    Spotify.savePlaylist(this.state.playlistName, tracksURIs).then(() => {
+       this.setState({
+         playlistName: 'New playlist',
+         playlistTracks: []
+       }) 
+    })
   }
 
   search(term) {

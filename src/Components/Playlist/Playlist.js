@@ -8,10 +8,15 @@ class Playlist extends React.Component {
     super(props)
     // binders
     this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleClickSave = this.handleClickSave.bind(this)
   }
 
   handleNameChange(event) {
     this.props.onNameChange(event.target.value)
+  }
+
+  handleClickSave() {
+    this.props.onSave()
   }
 
   render() {
